@@ -35,19 +35,42 @@
 //64.0.160.0 - 64.0.191.255
 //2^13 (= 8 192 )
 
-
-variable "elluis_codes_vpc_cidr_block" {
-  description = "64.0.0.0/16 block provides 65_536 unique ip address"
-  default = "64.0.0.0/16"
-}
-
+// main.tf setup
 variable "aws_region" {
   description = "aws deployment region"
   default = "us-east-2"
 }
-
 variable "aws_version" {
   description = "current aws version"
   default = "~> 2.70"
 }
-
+variable "elluis_codes_vpc_cidr_block" {
+  description = "64.0.0.0/16 block provides 65_536 unique ip address"
+  type = string
+  default = "64.0.0.0/16"
+}
+variable "instance_tenancy" {
+  description = "!!!!!!!! this can cost you mucho dinero !!!!!!!!!!!!"
+  type = string
+  default = "default"
+}
+variable "enable_dns_hostnames" {
+  description = "enable dns hostnames"
+  type = bool
+  default = true
+}
+variable "enable_dns_support" {
+  description = "enable dns support"
+  type = bool
+  default = true
+}
+variable "enable_classiclink" {
+  description = "enable classic link"
+  type = bool
+  default = false
+}
+variable "tags" {
+  description = "map of tags to ad to all resources"
+  type = string
+  default = "elluis_codes_terraform_v1"
+}
