@@ -8,29 +8,33 @@
 # prior to running this script through terraform
 # ensure proper aws credentials are supplied
 # developer has local environment setup
-
 terraform {
-  required_version = ">= 0.12 < 0.13"
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "~> 2.70"
+    }
+  }
 }
 
-
+# provide default aws cli and region information
 provider "aws" {
-    region = "us-east-2"
-
-    # allows any 2.x version of AWS provider
-    version = "~> 2.0"
+  region = var.aws_region
+  # allows any 2.x version of AWS provider
+  version = var.aws_version
 }
 
+# create aws vpc for elluis.codes
+resource "aws_vpc" "elluis_codes_vpc" {
+  cidr_block = var.elluis_codes_vpc_cidr_block
+}
 
 # set-up default launch server
-
-Root device type: ebs Virtualization type: hvm ENA Enabled: Yes
-resource "aws_launch_configuration" "example" {
-
+resource "aws_launch_configuration" "elluis_server" {
   # current ==  ami-0a91cd140a1fc148a
   # Ubuntu Server 20.04 LTS (HVM),EBS General Purpose (SSD) Volume Type. Support available from Canonical (http://www.ubuntu.com/cloud/services).
   # free tier eligible
-  image_id = "ami-0a91cd140a1fc148a"
+  image_id = var.server_ami
 
   # Gb == gigabit // GB == gigabyte
   # t2.micro is free tier eligible
@@ -38,21 +42,20 @@ resource "aws_launch_configuration" "example" {
   # alternative t3.nano(vCPUS = 2, Memory = 0.5GB)
   # alternative t3.micro(vCPUS = 2, Memory = 1GB)
   # alternative t3.na(vCPUS = 2, Memory = 2GB)
-  instance_type = "t2.micro"
+  instance_type = var.server_instance_type
 
   # 
-  security_groups = [aws_security_group.instance.id]
-  
+  security_groups = [
+    aws_security_group]
+
   user_data = <<-EOF
               #!/bin/bash
               echo "Hello, World" > index.html
               nohup busybox httpd -f -p ${var.server_port} &
               EOF
-    lifecycle {
-      create_before_destroy = true
-    }    
-  }
 
+
+}
 resource "aws_instance" "example" {
   # image aws ami
   ami = "ami-0c55b159cbfafe1f0"
@@ -61,7 +64,8 @@ resource "aws_instance" "example" {
   associate_public_ip_address = true
 
   # place the server inside elluis_server security group 
-  vpc_security_group_ids = [ aws_security_group.instance.id ]
+  vpc_security_group_ids = [
+    aws_security_group]
 
 
 
@@ -86,34 +90,22 @@ resource "aws_instance" "example" {
 }
 
 
-
-# basic template - 
+# basic template -
 # create security group template
 resource "aws_security_group" "instance" {
   name = "terra-example-instance"
   ingress {
-      from_port = var.server_port
-      to_port = var.server_port
-      protocol = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
+    from_port = var.server_port
+    to_port = var.server_port
+    protocol = "tcp"
+    cidr_blocks = [
+      "0.0.0.0/0"]
   }
 }
-
-
-# input variables
-
-variable "server_port" {
-    type = number
-    description = "port server will use for http requests"
-    default = 8080
-}
-
-
-
 
 # output variables
 
 output "public_ip" {
-    value = aws_instance.example.public_ip
-    description = "public ip address of our test server"
-    }
+  value = aws_instance.example.public_ip
+  description = "public ip address of our test server"
+}
