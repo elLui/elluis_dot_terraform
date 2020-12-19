@@ -36,31 +36,37 @@
 //2^13 (= 8 192 )
 
 // main.tf setup
+
 variable "elluis_codes_vpc_cidr_block" {
   description = "64.0.0.0/16 block provides 65_536 unique ip address"
   type = string
   default = "64.0.0.0/16"
 }
+
 variable "instance_tenancy" {
   description = "!!!!!!!! this can cost you mucho dinero !!!!!!!!!!!!"
   type = string
   default = "default"
 }
+
 variable "enable_dns_hostnames" {
   description = "enable dns hostnames"
   type = bool
   default = true
 }
+
 variable "enable_dns_support" {
   description = "enable dns support"
   type = bool
   default = true
 }
+
 variable "enable_classiclink" {
   description = "enable classic link"
   type = bool
   default = false
 }
+
 variable "tags" {
   description = "map of tags to ad to all resources"
   type = string

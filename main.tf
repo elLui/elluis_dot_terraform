@@ -20,13 +20,6 @@ terraform {
 # provide default aws cli and region information
 provider "aws" {
   region = var.aws_region
-  # allows any 2.x version of AWS provider
-  version = var.aws_version
-}
-
-# create aws vpc for elluis.codes
-resource "aws_vpc" "elluis_codes_vpc" {
-  cidr_block = var.elluis_codes_vpc_cidr_block
 }
 
 # basic template -

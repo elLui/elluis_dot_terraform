@@ -5,8 +5,7 @@ resource "aws_launch_configuration" "elluis_server" {
 //  instance type ie t2.micro
   instance_type = var.server_instance_type
 
-  security_groups = [
-    aws_security_group]
+  security_groups = [aws_security_group]
 
   user_data = <<-EOF
               #!/bin/bash
