@@ -36,14 +36,6 @@
 //2^13 (= 8 192 )
 
 // main.tf setup
-variable "aws_region" {
-  description = "aws deployment region"
-  default = "us-east-2"
-}
-variable "aws_version" {
-  description = "current aws version"
-  default = "~> 2.70"
-}
 variable "elluis_codes_vpc_cidr_block" {
   description = "64.0.0.0/16 block provides 65_536 unique ip address"
   type = string
