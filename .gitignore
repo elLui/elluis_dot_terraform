@@ -331,3 +331,10 @@ override.tf.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,terraform,ansible,flask,pycharm+all
 
+
+# More from text book -  Terraform Up & Running Oreilly
+
+
+.terraform
+*.tfstate
+*.tfstate.backup
