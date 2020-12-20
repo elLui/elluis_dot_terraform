@@ -1,5 +1,14 @@
 /*
 after learning terraform for 2 days - second attempt at building my
+
+
+if you see an empty comment space ie.
+
+# it is usually because the function/resource/variable/etc explains itself
+
+
+
+
 portfolio // blog infrastructure
 @author luis_cortez elluis.codes@gmail.com
 @version 0.02
