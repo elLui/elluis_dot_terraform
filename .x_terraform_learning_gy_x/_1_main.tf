@@ -17,7 +17,7 @@
 //  }
 ////  backend "s3" {}
 //}
-//// TODO: connect inserted boiler plate code for backend later
+//// connect inserted boiler plate code for backend later
 ////data "terraform_remote_state" "state" {
 ////  backend = "s3"
 ////  config {

@@ -8,7 +8,7 @@
 ////        subnet:         64.0.0.0/19
 ////        mask:           255.255.224.0
 ////        range:          64.0.0.0 - 64.0.31.255
-////TODO :: format subnets description once it is implemented
+//// format subnets description once it is implemented
 ////2
 ////64.0.32.0/19
 ////255.255.224.0
