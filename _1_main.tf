@@ -27,6 +27,10 @@ _one_ ::  explanation of tagging system can be found in _3_vpc_structure.tf
 
 
 
+
+_!_twenty_!_ :: construction zone located in :: _private_route_tables.tf (developer setup enabling)
+                                                _vpc_structures.tf
+             :: developer setup enabled
 ************************************************************************************************************************
 ########################################################################################################################
 # portfolio project // blog infrastructure
