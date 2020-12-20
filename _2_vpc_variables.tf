@@ -35,7 +35,7 @@
 //64.0.160.0 - 64.0.191.255
 //2^13 (= 8 192 )
 
-// main.tf setup
+// _1_main.tf setup
 
 variable "elluis_codes_vpc_cidr_block" {
   description = "64.0.0.0/16 block provides 65_536 unique ip address"
@@ -71,4 +71,16 @@ variable "tags" {
   description = "map of tags to ad to all resources"
   type = string
   default = "elluis_codes_terraform_v1"
+}
+
+variable "elluis_public_cidr" {
+  description = "cidr ranges for public subnets"
+  type = list(string)
+  default = ["64.0.0.0/19", "64.0.32.0/19", "64.0.64.0/19"]
+}
+
+variable "elluis_private_cidr" {
+  description = "cidr ranges for private subnets"
+  type = list(string)
+  default = ["64.0.96.0/19", "64.0.128.0/19", "64.0.160.0/19"]
 }

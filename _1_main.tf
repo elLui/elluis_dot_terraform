@@ -15,11 +15,22 @@ terraform {
       version = "~> 2.70"
     }
   }
+//  backend "s3" {}
 }
+// TODO: connect inserted boiler plate code for backend later
+//data "terraform_remote_state" "state" {
+//  backend = "s3"
+//  config {
+//    bucket = "${var.stateBucketName}"
+//    region = "${var.stateBucketRegion}"
+//    key    = "${var.stateBucketKey}"
+//  }
+//}
 
 # provide default aws cli and region information
 provider "aws" {
   region = var.aws_region
+  alias = "elluis"
 }
 
 # basic template -
