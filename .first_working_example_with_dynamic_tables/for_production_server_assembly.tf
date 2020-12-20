@@ -11,6 +11,8 @@ locals {
     Environment = lower(var.env_prefix)
   }
 
+  # this format yields the following output placed as our vpc name:
+  #                                                            "elluis_codes_limited_network"
   vpc_name_tag = format("%s-%s-%s", upper(var.env_prefix), local.region_short_name, "default")
   public_label = "elluis_public"
   private_label = "elluis_private"

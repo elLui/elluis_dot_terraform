@@ -3,13 +3,13 @@ output "vpc" {
   value = aws_vpc.elluis_vpc
 }
 
-//output "public_subnet_ids" {
-//  value = {for az, subnet in aws_subnet.public : az => subnet.id}
-//}
-//
-//output "private_subnet_ids" {
-//  value = {for az, subnet in aws_subnet.private : az => subnet.id}
-//}
+output "public_subnet_ids" {
+  value = {for az, subnet in aws_subnet.public : az => subnet.id}
+}
+
+output "private_subnet_ids" {
+  value = {for az, subnet in aws_subnet.private : az => subnet.id}
+}
 
 # Each Public Subnet has the same Route Table
 # Have to construct the AZ to public route table output from aws_subnet.public because I cant iterate
