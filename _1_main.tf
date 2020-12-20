@@ -10,8 +10,8 @@ if you see an empty comment space ie.
 
 ########################################################################################################################
 ***************** there are some pretty specific explanations regarding a few of the trickier aspects ******************
-# having said that - there will be a few conventions that carry on throughout the code explanations for these will
-# declared in this block                                                                                               #
+#   having said that - there will be a few conventions that carry on throughout the code explanations for these will   #
+#                                            declared in this block                                                    #
                                     :: topics are in order of construction ::
 
 _one_ ::  explanation of tagging system can be found in _3_vpc_structure.tf
@@ -19,16 +19,19 @@ _one_ ::  explanation of tagging system can be found in _3_vpc_structure.tf
               vpc name
               create one private && public subnet in each available availability zone according to selected region
               name each subnet as follows: (vpc), (region+availability zone), (tag designating public or private subnet)
+              dynamically assign ip address ranges to given subnets
               create one private and public route table in vpc
               name each route table following explained conventions
+
+
 
 
 
 ************************************************************************************************************************
 ########################################################################################################################
 # portfolio project // blog infrastructure
-@author luis_cortez elluis.codes@gmail.com
-@version 0.02
+# @author luis_cortez elluis.codes@gmail.com
+# @version 0.02
 */
 terraform {
   required_providers {
