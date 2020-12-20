@@ -12,7 +12,7 @@ locals {
 
   # notice that the last field in the format string is "default" the tag we
   # be using to number our infrastructure names
-  vpc_name_tag        = format("%s-%s-%s", lower(var.env_prefix), local.region_short_name, "default")
+  vpc_name_tag        = format("%s-%s-%s", upper(var.env_prefix), local.region_short_name, "default")
   public_label        = "elluis_public"
   private_label       = "elluis_private"
   nat_gw_label        = "elluis_nat_gateway"
