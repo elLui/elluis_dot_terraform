@@ -38,8 +38,8 @@ variable "azs" {
   description = "AZ (letter) to Subnet (number for 3rd octet)"
   type        = map(number)
   default = {
-    a = 1
-    b = 2
-    c = 3
+    a = 11
+    b = 22
+    c = 33
   }
 }

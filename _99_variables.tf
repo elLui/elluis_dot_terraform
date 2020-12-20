@@ -16,8 +16,25 @@ variable "env_prefix" {
   default = "elluis_codes_limited_network"
 }
 
-variable "elluis_vpc_cidr_block" {
-  description = "main vpc cidr block"
-  type = string
-  default = "64.0.0.0/16"
+
+
+variable "azs" {
+  description = "3rd octet subnet number"
+  type                = map(number)
+  default = {
+    a = 11
+    b = 22
+    c = 33
+  }
+}
+
+variable "aws_region" {
+  description = "aws deployment region"
+  default = "us-east-2"
+}
+
+# version can not be declared as a variable
+variable "aws_version" {
+  description = "current aws version"
+  default = "~> 2.70"
 }

@@ -12,3 +12,8 @@ terraform {
     }
   }
 }
+
+# provide default aws cli and region information
+provider "aws" {
+  region = var.aws_region
+}
