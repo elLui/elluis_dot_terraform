@@ -19,7 +19,8 @@ elluis-blog ingrastructure Terraform build -
             
                 environments:
                     
-                        production: ?? not yet implemented !! production in this sense - means the best of what I have - mainly without comments to reduce clutter !!
+                        production: ?? not yet implemented !! production in this sense - means the best of what I have 
+                        !! - mainly without comments to reduce clutter !!
                         
                         staging: construction of production environment
                         
